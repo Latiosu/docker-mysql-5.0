@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    db:
+        build:
+            context: .
+            args:
+                # This sets uids with fallback of user 1000
+                # Can be overwritten with a custom .ENV file
+                uid: "${USER_UID:-1000}"
+                gid: "${USER_GID:-1000}"
+        ports:
+            - "${DB_PORT:-3306}:3306"
+        environment:
+            MYSQL_DATABASE: "mydatabase"
+            MYSQL_ROOT_HOST: "${DB_ROOT_HOST:-%}"
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PW:-root}"
+            MYSQL_USER: "${DB_USER:-myuser}"
+            MYSQL_PASSWORD: "${DB_PASSWORD:-mypassword}"
+        volumes:
+            - ./mydata:/mysql/data
