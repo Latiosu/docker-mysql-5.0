@@ -15,7 +15,7 @@ docker run \
 -e MYSQL_ROOT_PASSWORD="root" \
 -e MYSQL_USER="myuser" \
 -e MYSQL_PASSWORD="mypassword" \
-mysql:5.0
+latiosu/mysql5:5.0.15
 ```
 
 ## Run with Docker Compose
